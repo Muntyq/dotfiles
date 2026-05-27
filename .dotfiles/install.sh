@@ -8,4 +8,4 @@ git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" config --local status.showUn
 
  mkdir -p "$HOME"/.dotfiles-backup
  git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" checkout 2>&1 | grep "^\s" | awk '{print $1}' | xargs -I{} mv {} "$HOME"/.dotfiles-backup/{}
-git --git-dir="$HOME"/.dotfiles --work-tree="$HOME"
+git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" checkout
