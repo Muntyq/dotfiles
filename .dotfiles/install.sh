@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
 
-ssh-keygen github.com >> "$HOME"/.ssh/known_hosts
+ssh-keyscan github.com >> "$HOME"/.ssh/known_hosts
 git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" config --local status.showUntrackedFiles no
 
 # Following line rm's original dotfiles, change for commented lines to keep them as backup
