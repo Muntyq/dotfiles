@@ -1,0 +1,9 @@
+keys:
+- &munty age1x0vpztadrqpkaty4ear38w5ukv0eq020y3wp8ccyayhyamg4yu0qkxp5ku
+- &xps13 age1yrh88x7d4pvwa676f7c8hm20uykd6fp3lvf76wc93duussvqd4rshc2tc0
+
+creation_rules:
+- path_regex: secrets/.*\.yaml$
+  key_groups:
+    - age:
+      - *munty
