@@ -6,6 +6,7 @@ git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" config --local status.showUn
 # Following line rm's original dotfiles, change for commented lines to keep them as backup
 #git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" checkout 2>&1 | grep "^\s" | awk '{print $1}' | xargs rm
 
- mkdir -p "$HOME"/.dotfiles-backup
- git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" checkout 2>&1 | grep "^\s" | awk '{print $1}' | xargs -I{} mv {} "$HOME"/.dotfiles-backup/{}
+mkdir -p "$HOME"/.dotfiles-backup
+git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout 2>&1 | grep "^\s" | awk '{print $1}' | xargs -I{} sh -c 'mkdir -p "$HOME/.dotfiles-backup/$(dirname "{}")" && mv "{}" "$HOME/.dotfiles-backup/{}"'
+git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" checkout 2>&1 | grep "^\s" | awk '{print $1}' | xargs -I{} mv {} "$HOME"/.dotfiles-backup/{}
 git --git-dir="$HOME"/.dotfiles --work-tree="$HOME" checkout
