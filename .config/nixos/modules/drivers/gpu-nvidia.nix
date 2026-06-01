@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
 	hardware.nvidia = {
@@ -21,5 +21,5 @@
 		GBM_BACKEND = "nvidia-drm";
 		__GLX_VENDOR_LIBRARY_NAME = "nvidia";
 		WLR_NO_HARDWARE_CURSORS = "1";
-	}
+	};
 }

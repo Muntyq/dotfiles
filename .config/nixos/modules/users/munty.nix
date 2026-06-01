@@ -1,18 +1,12 @@
-{ config, pkgs, inputs, lib, hostProfile, ... }:
+{ config, pkgs, hostProfile, ... }:
 
 let
 	homeModules = {
 		xps13 = [
-			../home/common-home.nix
 			../home/gui-environment.nix
-			../home/media.nix
 		];
 		desktop = [
-			../home/common-home.nix
 			../home/gui-environment.nix
-			../home/gaming.nix
-			../home/media.nix
-			../home/editing.nix
 		];
 	};
   
@@ -21,16 +15,17 @@ let
 			../system/hyprland.nix
 			../system/sddm.nix
 			../system/wayland.nix
-			../system/sops.nix
+			../sops.nix
+			../media.nix
 		];
 		desktop = [
-			../system/nvidia.nix
-			../system/cpu-intel.nix
 			../system/hyprland.nix
 			../system/sddm.nix
-			../system/steam.nix
 			../system/wayland.nix
-			../system/sops.nix
+			../editing.nix
+			../media.nix
+			../sops.nix
+			../gaming.nix
 		];
 	};
 

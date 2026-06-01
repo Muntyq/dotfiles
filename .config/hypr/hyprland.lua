@@ -47,8 +47,8 @@ local colorPicker = "hyprpicker -a"
 -- end)
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd('ghostty -e sh -c "fastfetch; paru"')
-	hl.exec_cmd("librewolf")
+	-- hl.exec_cmd('ghostty -e sh -c "fastfetch; paru"')
+	-- hl.exec_cmd("librewolf")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("qs -p /home/munty/myProjects/code/ina-shell/shell.qml")
 	hl.exec_cmd("steam -silent")

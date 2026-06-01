@@ -1,11 +1,11 @@
-{ config, pkgs, lib, inputs, ... }:
+{ ... }:
 
 {
 	imports = [
 		./hardware-configuration.nix
-		../../modules/system/common_system.nix
-		../../modules/cpu-intel.nix
-		../../modules/gpu-nvidia.nix
+		../../modules/general-config.nix
+		../../modules/drivers/cpu-intel.nix
+		../../modules/drivers/gpu-nvidia.nix
 	];
 
 	networking.hostName = "ina-core";

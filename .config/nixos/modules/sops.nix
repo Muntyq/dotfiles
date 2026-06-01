@@ -1,7 +1,7 @@
-{ userProfile, ... }: {
+{ ... }: {
 
 	sops = {
-		defaultSopsFile = ../../secrets/munty.yaml;
+		defaultSopsFile = ../secrets/munty.yaml;
 		defaultSopsFormat = "yaml";
 
 		age = {
