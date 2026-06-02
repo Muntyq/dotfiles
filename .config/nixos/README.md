@@ -33,15 +33,6 @@ nixos/ {
 	flake.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/flake.nix };
 	flake.lock;
 	modules/ {
-		home/ {
-			home-common.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/modules/home/home-common.nix };
-			gui-environment.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/modules/home/gui-environment.nix };
-			... // a bunch of modules for home apps
-		};
-		system/ {
-			common-system.nix { https://github.com/Muntyq/nixos-config/blob/main/modules/system/common_system.nix };
-			... // a bunch of modules for system apps
-		};
 		users/ {
 			munty.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/modules/users/munty.nix };
 		};

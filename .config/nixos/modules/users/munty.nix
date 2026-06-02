@@ -1,31 +1,18 @@
 { config, pkgs, hostProfile, ... }:
 
 let
-	homeModules = {
+  	muntyModules = {
 		xps13 = [
-			../home/gui-environment.nix
-		];
-		desktop = [
-			../home/gui-environment.nix
-		];
-	};
-  
-  	systemModules = {
-		xps13 = [
-			../system/hyprland.nix
-			../system/sddm.nix
-			../system/wayland.nix
 			../sops.nix
-			../media.nix
+			../general-apps.nix
+			../rice/hyprland.nix
 		];
 		desktop = [
-			../system/hyprland.nix
-			../system/sddm.nix
-			../system/wayland.nix
 			../editing.nix
-			../media.nix
+			../general-apps.nix
 			../sops.nix
 			../gaming.nix
+			../rice/hyprland.nix
 		];
 	};
 
@@ -51,11 +38,11 @@ in {
 			home.username = "munty";
 			home.homeDirectory = "/home/munty";
 			home.stateVersion = "25.11";
-			imports = (homeModules.${hostProfile} or []);
+			imports = (muntyModules.${hostProfile} or []);
 		};
 	};
 
-	imports = (systemModules.${hostProfile} or []);
+	imports = (muntyModules.${hostProfile} or []);
 
 	# Error catching if provided hostProfile is not defined
 

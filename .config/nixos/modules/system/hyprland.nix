@@ -1,9 +1,0 @@
-{ config, pkgs, userProfile, ... }:
-
-{
-	programs.hyprland = {
-		enable = true;
-		withUWSM = true;
-	};
-	programs.uwsm.enable = true;
-}

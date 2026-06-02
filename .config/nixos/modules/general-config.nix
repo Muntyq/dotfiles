@@ -1,6 +1,5 @@
-{ pkgs, hostProfile, userProfile, ... }:
+{ pkgs, hostProfile, userProfile, ... }: {
 
-{
 
 # ██╗  ██╗ ██████╗ ███╗   ███╗███████╗
 # ██║  ██║██╔═══██╗████╗ ████║██╔════╝
@@ -33,8 +32,6 @@
 	};
 
 
-
-
 # ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗
 # ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║
 # ███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║
@@ -51,18 +48,20 @@
 		curl
 		sops
 		nmap
-		rsync
-		unar
+		rsync  # sync between devices
+		unar   # unzip
 	];
 
 	services.openssh.enable = true;
 	programs.bash.enable = true;
+	services.dbus.enable = true;
 
 	# Nix general configs --------------------
 
-	nix.settings.experimental-features = ["nix-command" "flakes" ];
-	nixpkgs.config.allowUnfree = true;
-	users.mutableUsers = false;
+	nix.settings = {
+		experimental-features = ["nix-command" "flakes" ];
+		auto-optimise-store = true;
+	};
 
 	nix.gc = {
 		automatic = true;
@@ -70,11 +69,18 @@
 		options = "--delete-older-than 30d";
 	};
 
+	nixpkgs.config.allowUnfree = true;
+	users.mutableUsers = false;
+
 	# Bootloader config ----------------------
 
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
-	boot.loader.systemd-boot.configurationLimit = 9;
+	boot.loader = {
+		efi.canTouchEfiVariables = true;
+		systemd-boot = {
+			enable = true;
+			configurationLimit = 9;
+		};
+	};
 
 	systemd.targets = {
 		sleep.enable = true;
@@ -132,13 +138,23 @@
 		variant = "altgr-intl";
 	};
 
+	i18n.inputMethod = {
+		enable = true;
+		type = "fcitx5";
+		fcitx5.waylandFrontend = true;
+		fcitx5.addons = with pkgs; [
+			fcitx5-mozc
+			fcitx5-gtk
+		];
+	};
+
 	# Audio ----------------------------------
 
 	security.rtkit.enable = true;
   	services.pipewire = {
 		enable = true;
 		alsa.enable = true;
-		alsa.support32Bit = true;
+		alsa.support32Bit = true; # legit only for steam
 		pulse.enable = true;
 		jack.enable = true;
 		wireplumber.enable = true;
