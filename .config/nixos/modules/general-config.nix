@@ -72,6 +72,11 @@
 	nixpkgs.config.allowUnfree = true;
 	users.mutableUsers = false;
 
+	programs.direnv = {
+		enable = true;
+		nix-direnv.enable = true;
+	};
+
 	# Bootloader config ----------------------
 
 	boot.loader = {

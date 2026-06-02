@@ -38,7 +38,6 @@ in {
 			home.username = "munty";
 			home.homeDirectory = "/home/munty";
 			home.stateVersion = "25.11";
-			imports = (muntyModules.${hostProfile} or []);
 		};
 	};
 

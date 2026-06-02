@@ -30,17 +30,36 @@ Fix duplicate bug in storage.nix
 nixos/ {
 	.git;
 	README.md;
-	flake.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/flake.nix };
+	flake.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/flake.nix };
 	flake.lock;
+	secrets/ { munty.yaml; };
+	sops.yaml { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/.sops.yaml };
 	modules/ {
+		gaming.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/gaming.nix };
+		editing.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/editing.nix };
+		general-apps.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/general-apps.nix };
+		general-config.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/general-config.nix };
+		sops.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/sops.nix };
+		drivers / {
+			cpu-intel.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/drivers/cpu-intel.nix };
+			gpu-intel.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/drivers/gpu-intel.nix };
+			gpu-nvidia.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/drivers/gpu-nvidia.nix };
+		};
+		rice / { 
+			hyprland.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/rice/hyprland.nix };
+			river.nix { //to do };
+		};
 		users/ {
-			munty.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/modules/users/munty.nix };
+			munty.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/users/munty.nix };
 		};
 	hosts/ {
 		xps13/ {
-			configuration.nix { https://github.com/Muntyq/dotfiles/blob/main/dot_config/nixos/hosts/xps13/configuration.nix };
+			configuration.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/hosts/xps13/configuration.nix };
 			hardware-configuration.nix;
 		};
-		desktop/ { // pending to do };
+		desktop/ {
+			configuration.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/hosts/desktop/configuratioon.nix; };
+			hardware-configuration.nix;
+		};
 	};
 };
