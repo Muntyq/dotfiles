@@ -28,19 +28,19 @@ return {
 					end
 				},
 				mapping = {
-					['<CR>'] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							if luasnip.expandable() then
-								luasnip.expand()
-							else
-								cmp.confirm({
-									select = false,
-								})
-							end
-						else
-							fallback()
-						end
-					end),
+					-- ['<CR>'] = cmp.mapping(function(fallback)
+					-- 	if cmp.visible() then
+					-- 		if luasnip.expandable() then
+					-- 			luasnip.expand()
+					-- 		else
+					-- 			cmp.confirm({
+					-- 				select = false,
+					-- 			})
+					-- 		end
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end),
 
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
