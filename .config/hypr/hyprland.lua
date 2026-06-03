@@ -19,6 +19,12 @@ hl.monitor({
     position = "0x0",
     scale    = "1",
 })
+hl.monitor({
+	output = "desc:Sharp Corporation 0x1548",
+	mode = "1920x1200@59.95",
+	position = "0x0",
+	scale = "1",
+})
 
 
 ---------------------
