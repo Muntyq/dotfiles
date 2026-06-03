@@ -1,23 +1,25 @@
+
 { pkgs, userProfile, ... }: {
 	
 	home-manager.users.${userProfile}.home.packages = with pkgs; [
 		wofi       # app launcher
-		hyprpicker # color picker
-		hyprshot   # screenshots
-		hyprpaper  # wallpapers
 		dunst      # notifications
-
-		foot
+	];
+	
+	environment.systemPackages = with pkgs; [
 		river
 	];
 
 	# Compositor & window manager (Hyprland)
 
-	programs.hyprland = {
+	programs.uwsm = {
 		enable = true;
-		withUWSM = true;
+		waylandCompositors.river = {
+			prettyName = "River";
+			comment = "River + uwsm";
+			binPath = "/run/current-system/sw/bin/river";
+		};
 	};
-	programs.uwsm.enable = true;
 	
 	# Login (Sddm)
 
@@ -30,7 +32,7 @@
 		enable = true;
 		extraPortals = with pkgs; [
 			xdg-desktop-portal-gtk
-			#xdg-desktop-portal-wlr
+			xdg-desktop-portal-wlr
 		];
 	};
 	

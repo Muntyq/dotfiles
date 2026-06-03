@@ -54,7 +54,10 @@
 
 	services.openssh.enable = true;
 	programs.bash.enable = true;
-	services.dbus.enable = true;
+	services.dbus = {
+		enable = true;
+		implementation = "broker";
+	};
 
 	# Nix general configs --------------------
 
