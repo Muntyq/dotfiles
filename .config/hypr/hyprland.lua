@@ -14,7 +14,7 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "DP-4",
+    output   = "desc:ASUSTek COMPUTER INC VG27A M3LMQS355216",
     mode     = "2560x1440@143.97",
     position = "0x0",
     scale    = "1",

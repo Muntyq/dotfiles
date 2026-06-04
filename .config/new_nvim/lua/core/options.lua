@@ -5,7 +5,7 @@ opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
 opt.cursorline = true
-opt.inccomand = "split"
+opt.inccommand = "split"
 opt.termguicolors = true
 opt.showmode = true
 opt.cmdheight = 1
@@ -16,8 +16,8 @@ opt.sidescrolloff = 10
 opt.wrap = true
 opt.tabstop = 5
 opt.shiftwidth = 5
-opt.softtabstop = 5
-opt.expandtab = true
+--opt.softtabstop = 5
+opt.expandtab = false
 opt.smartindent = true
 opt.breakindent = true
 opt.autoindent = true
@@ -26,7 +26,7 @@ opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Tmux ----------------
 opt.splitright = true
-opt.splitbelow = true
+--opt.splitbelow = true
 
 -- Files ---------------
 opt.undofile = true
@@ -38,7 +38,7 @@ opt.timeoutlen = 300
 -- Search --------------
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 
 -- Folding (treesitter)-
