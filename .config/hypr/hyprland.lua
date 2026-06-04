@@ -66,10 +66,10 @@ end)
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_THEME", "Nordzy")
+hl.env("HYPRCURSOR_THEME", "Nordzy-cursors")
 
 hl.env("XCURSOR_SIZE", "24")
-hl.env("XCURSOR_THEME", "Nordzy")
+hl.env("XCURSOR_THEME", "Nordzy-hyprcursors")
 
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
