@@ -53,10 +53,8 @@ local colorPicker = "hyprpicker -a"
 -- end)
 
 hl.on("hyprland.start", function()
-	-- hl.exec_cmd('ghostty -e sh -c "fastfetch; paru"')
 	-- hl.exec_cmd("librewolf")
 	hl.exec_cmd("hyprpaper")
-	hl.exec_cmd("qs -p /home/munty/myProjects/code/ina-shell/shell.qml")
 	hl.exec_cmd("steam -silent")
 	hl.exec_cmd("fcitx5 -d")
 end)
@@ -68,7 +66,11 @@ end)
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 hl.env("XCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "nordic_cursors_scalable")
+
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_THEME", "nordic_cursors_scalable")
+
 hl.env("LIBVA_DRIVER_NAME","nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME","nvidia")
 
