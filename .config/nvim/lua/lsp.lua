@@ -7,18 +7,18 @@ blink.setup({
 	fuzzy = { implementation = 'lua' },
 
 	keymap = {
-		preset      = 'none', -- we define everything explicitly
+		preset        = 'none', -- we define everything explicitly
 
 		-- ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 		-- ['<C-e>']     = { 'hide', 'fallback' },
 
 		-- Manual navigation
-		['<C-d>']   = { 'select_next', 'fallback' },
-		['<C-u>']   = { 'select_prev', 'fallback' },
+		['<Tab>']     = { 'select_next', 'snippet_forward', 'fallback' },
+		['<S-Tab>']   = { 'select_prev', 'snippet_backward', 'fallback' },
+		['<C-Space>'] = { 'select_and_accept', 'fallback' },
 
 		-- Tab: accept item OR jump to next snippet placeholder
-		['<Tab>']   = { 'accept', 'snippet_forward', 'fallback' },
-		['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+		-- ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 
 		-- Scroll docs popup
 		-- ['<C-d>']     = { 'scroll_documentation_down', 'fallback' },
