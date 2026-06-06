@@ -1,48 +1,6 @@
 { pkgs, hostProfile, userProfile, ... }: {
 
 
-# ██╗  ██╗ ██████╗ ███╗   ███╗███████╗
-# ██║  ██║██╔═══██╗████╗ ████║██╔════╝
-# ███████║██║   ██║██╔████╔██║█████╗
-# ██╔══██║██║   ██║██║╚██╔╝██║██╔══╝
-# ██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗
-# ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
-
-	home-manager.users.${userProfile} = {
-		fonts.fontconfig = {
-			enable = true;
-			defaultFonts = {
-				monospace = [ "Hack Nerd Font Mono" "Zen Kaku Gothic New" ];
-				sansSerif = [ "Exo 2" "Zen Kaku Gothic New" ];
-				serif = [ "Exo 2" "Zen Kaku Gothic New" ];
-			};
-		};
-
-		home = {
-			packages = with pkgs; [
-				clapboard
-				ghostty
-				fastfetch
-				btop
-				unar
-			];
-
-			sessionPath = [
-				"$HOME/.local/bin"
-			];
-
-			sessionVariables = {
-				TERMINAL = "ghostty";
-
-				XDG_CONFIG_HOME = "$HOME/.config";
-				XDG_CACHE_HOME = "$HOME/.cache";
-				XDG_DATA_HOME = "$HOME/.local/share";
-				XDG_STATE_HOME = "$HOME/.local/state";
-			};
-		};
-	};
-
-
 # ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗
 # ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║
 # ███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║
@@ -50,16 +8,18 @@
 # ███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║
 # ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝
 
-	# Packages needed literaly everywhere ----
+	# Packages needed literally everywhere ---
 
 	environment.systemPackages = with pkgs; [
 		git
-		vim
+		neovim
 		wget
 		curl
 		sops
 		nmap
-		rsync  # sync between devices
+		rsync
+		age
+		btop
 		unar   # unzip
 	];
 
@@ -85,12 +45,6 @@
 
 	nixpkgs.config.allowUnfree = true;
 	users.mutableUsers = false;
-
-	programs.direnv = {
-		enable = true;
-		silent = true;
-		nix-direnv.enable = true;
-	};
 
 	# Bootloader config ----------------------
 
@@ -120,7 +74,7 @@
 			cd /home/${userProfile}/.config/nixos
 			${pkgs.nix}/bin/nix flake update
 			/run/current-system/sw/bin/nixos-rebuild switch --flake .#${hostProfile} 2>&1
-			echo -e [1;
+			echo -e "\e[1;94mNixOS system flake updated, remember to reboot! >ヮ<\e[0m"
 		'';
 		after = [ "network-online.target" ];
 		requires = [ "network-online.target" ];
@@ -151,47 +105,5 @@
 		LC_TELEPHONE = "es_ES.UTF-8";
 		LC_TIME = "es_ES.UTF-8";
 	};
-
-	# Keyboard type shit ---------------------
-
-	services.xserver.xkb = {
-		layout = "us";
-		variant = "altgr-intl";
-	};
-
-	i18n.inputMethod = {
-		enable = true;
-		type = "fcitx5";
-		fcitx5.waylandFrontend = true;
-		fcitx5.addons = with pkgs; [
-			fcitx5-mozc
-			fcitx5-gtk
-		];
-	};
-
-	# Audio ----------------------------------
-
-	security.rtkit.enable = true;
-  	services.pipewire = {
-		enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true; # legit only for steam
-		pulse.enable = true;
-		jack.enable = true;
-		wireplumber.enable = true;
-	};
-
-	# Bluetooth ------------------------------
-
-	hardware.bluetooth.enable = true;
-
-	# Network --------------------------------
-
-	networking.networkmanager.enable = true;
-
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 }

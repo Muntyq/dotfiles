@@ -1,11 +1,11 @@
 
 { pkgs, userProfile, ... }: {
-	
+
 	home-manager.users.${userProfile}.home.packages = with pkgs; [
 		wofi       # app launcher
 		dunst      # notifications
 	];
-	
+
 	environment.systemPackages = with pkgs; [
 		river
 	];
@@ -20,7 +20,7 @@
 			binPath = "/run/current-system/sw/bin/river";
 		};
 	};
-	
+
 	# Login (Sddm)
 
 	services.displayManager.sddm.enable = true;
@@ -35,7 +35,7 @@
 			xdg-desktop-portal-wlr
 		];
 	};
-	
+
 	environment.sessionVariables = {
 		NIXOS_OZONE_WL = "1";
 		MOZ_ENABLE_WAYLAND = "1";

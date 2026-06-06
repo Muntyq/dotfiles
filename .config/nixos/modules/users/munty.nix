@@ -1,15 +1,15 @@
-{ config, pkgs, hostProfile, ... }:
+{ config, pkgs, hostProfile, lib, ... }:
 
 let
   	muntyModules = {
 		xps13 = [
 			../sops.nix
-			../general-apps.nix
+			../general-home.nix
 			../rice/hyprland.nix
 		];
 		desktop = [
 			../editing.nix
-			../general-apps.nix
+			../general-home.nix
 			../sops.nix
 			../gaming.nix
 			../rice/hyprland.nix
