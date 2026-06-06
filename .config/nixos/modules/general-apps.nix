@@ -43,7 +43,7 @@
 			]))
 
 			# my own apps -------------------------
-			inputs.inadev.packages.${pkgs.system}.inadev
+			inputs.inadev.packages.${pkgs.stdenv.hostPlatform.system}.inadev
 
 		];
 
@@ -51,7 +51,6 @@
 			EDITOR="nvim";
 			VISUAL="nvim";
 			BROWSER="librewolf";
-			DIRENV_LOG_FORMAT="";
 		};
 	};
 
