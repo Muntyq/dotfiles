@@ -13,8 +13,8 @@
 			enable = true;
 			defaultFonts = {
 				monospace = [ "Hack Nerd Font Mono" "Zen Kaku Gothic New" ];
-				sansSerif = [ "Geist" "Zen Kaku Gothic New" ];
-				serif = [ "Geist" "Zen Kaku Gothic New" ];
+				sansSerif = [ "Exo 2" "Zen Kaku Gothic New" ];
+				serif = [ "Exo 2" "Zen Kaku Gothic New" ];
 			};
 		};
 
