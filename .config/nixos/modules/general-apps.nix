@@ -50,7 +50,7 @@
 			EDITOR="nvim";
 			VISUAL="nvim";
 			BROWSER="librewolf";
-			DIRENV_LOG_FORMAT=""
+			DIRENV_LOG_FORMAT="";
 		};
 	};
 
