@@ -1,5 +1,5 @@
-{ pkgs, userProfile, ... }: {
-	
+{ pkgs, userProfile, inputs, ... }: {
+
 	home-manager.users.${userProfile}.home = {
 		packages = with pkgs; [
 			librewolf            # web browser
@@ -41,12 +41,17 @@
 				p.toml
 				p.markdown
 			]))
+
+			# my own apps -------------------------
+			inputs.inadev.packages.${pkgs.system}.inadev
 		];
-			sessionVariables = {
-				EDITOR="nvim";
-				VISUAL="nvim";
-				BROWSER="librewolf";
-			};
+
+		sessionVariables = {
+			EDITOR="nvim";
+			VISUAL="nvim";
+			BROWSER="librewolf";
+			DIRENV_LOG_FORMAT=""
+		};
 	};
 
 	# Web browser ------------------

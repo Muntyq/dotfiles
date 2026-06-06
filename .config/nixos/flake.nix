@@ -14,6 +14,11 @@
 			url = "github:Mic92/sops-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		inadev = {
+			url = "github:Muntyq/inadev";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { nixpkgs, nixpkgs-stable, home-manager, sops-nix, self, ... }@inputs:
@@ -35,7 +40,7 @@
 
 	in {
 		nixosConfigurations = {
-			# Names to change, i want to larp a bit;possible names: Core Mainframe Node Nibble0x08 proto grid monolith archive 
+			# Names to change, i want to larp a bit;possible names: Core Mainframe Node Nibble0x08 proto grid monolith archive
 			xps13 = mkSystem {
 				system = "x86_64-linux";
 				hostProfile = "xps13";
