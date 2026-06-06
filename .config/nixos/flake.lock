@@ -28,11 +28,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1780729703,
-        "narHash": "sha256-/ol2+1alpdpkg0JbuEqtkddbTlLtdJjbY05C/yyyQ2I=",
+        "lastModified": 1780730656,
+        "narHash": "sha256-pGKz0avB+U1MCNKAFmCEQGO0e2llhsXyhp+riX0m9QU=",
         "owner": "Muntyq",
         "repo": "inadev",
-        "rev": "8e4921f8c03190fb972c140c000d3c870f3baca8",
+        "rev": "640c813c84bf11ac77cccbae623f8853781c66ea",
         "type": "github"
       },
       "original": {

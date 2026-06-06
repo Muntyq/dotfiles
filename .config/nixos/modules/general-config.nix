@@ -68,7 +68,7 @@
 
 	nix.gc = {
 		automatic = true;
-		dates = "Mon 10:00";
+		dates = "Mon 06:00";
 		options = "--delete-older-than 30d";
 	};
 
@@ -109,6 +109,7 @@
 			cd /home/${userProfile}/.config/nixos
 			${pkgs.nix}/bin/nix flake update
 			/run/current-system/sw/bin/nixos-rebuild switch --flake .#${hostProfile} 2>&1
+			echo -e [1;
 		'';
 		after = [ "network-online.target" ];
 		requires = [ "network-online.target" ];
@@ -117,7 +118,7 @@
 	systemd.timers.nixos-flake-auto-update = {
 		wantedBy = [ "timers.target" ];
 		timerConfig = {
-			OnCalendar = "";
+			OnCalendar = "Sat 06:00";
 			Persistent = true;
 		};
 	};
