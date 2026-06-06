@@ -44,6 +44,7 @@
 
 			# my own apps -------------------------
 			inputs.inadev.packages.${pkgs.system}.inadev
+
 		];
 
 		sessionVariables = {
