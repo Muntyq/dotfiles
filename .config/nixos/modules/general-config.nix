@@ -8,26 +8,37 @@
 # ██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗
 # ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
 
-	home-manager.users.${userProfile}.home = {
-		packages = with pkgs; [
-			clapboard
-			ghostty
-			fastfetch
-			btop
-			unar
-		];
+	home-manager.users.${userProfile} = {
+		fonts.fontconfig = {
+			enable = true;
+			defaultFonts = {
+				monospace = [ "Hack Nerd Font Mono" "Zen Kaku Gothic New" ];
+				sansSerif = [ "Geist" "Zen Kaku Gothic New" ];
+				serif = [ "Geist" "Zen Kaku Gothic New" ];
+			};
+		};
 
-		sessionPath = [
-			"$HOME/.local/bin"
-		];
+		home = {
+			packages = with pkgs; [
+				clapboard
+				ghostty
+				fastfetch
+				btop
+				unar
+			];
 
-		sessionVariables = {
-			TERMINAL = "ghostty";
+			sessionPath = [
+				"$HOME/.local/bin"
+			];
 
-			XDG_CONFIG_HOME = "$HOME/.config";
-			XDG_CACHE_HOME = "$HOME/.cache";
-			XDG_DATA_HOME = "$HOME/.local/share";
-			XDG_STATE_HOME = "$HOME/.local/state";
+			sessionVariables = {
+				TERMINAL = "ghostty";
+
+				XDG_CONFIG_HOME = "$HOME/.config";
+				XDG_CACHE_HOME = "$HOME/.cache";
+				XDG_DATA_HOME = "$HOME/.local/share";
+				XDG_STATE_HOME = "$HOME/.local/state";
+			};
 		};
 	};
 
