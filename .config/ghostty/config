@@ -26,7 +26,7 @@
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
 font-family = HackNerdFontMono
-font-family = SymbolsNerdFont
+font-family = HigureGothic
 confirm-close-surface = false
 # background-opacity = 0.95
 # background-blur = 20
