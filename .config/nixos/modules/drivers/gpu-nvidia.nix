@@ -2,11 +2,12 @@
 
 	hardware.nvidia = {
 		modesetting.enable = true;
-		powerManagement.enable = false;
-		open = true;
+		powerManagement.enable = true;
+		open = false;
 		nvidiaSettings = true;
 		package = config.boot.kernelPackages.nvidiaPackages.stable;
 	};
+	boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 
 	hardware.graphics = {
 		enable = true;

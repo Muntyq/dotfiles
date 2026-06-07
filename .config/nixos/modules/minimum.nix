@@ -57,11 +57,14 @@
 
 	# Bootloader config ----------------------
 
-	boot.loader = lib.mkIf ( hostProfile != "pebble" ) {
-		efi.canTouchEfiVariables = true;
-		systemd-boot = {
-			enable = true;
-			configurationLimit = 9;
+	boot = lib.mkIf ( hostProfile != "pebble" ) {
+		resumeDevice = "/dev/disk/by-label/swap";
+		loader = {
+			efi.canTouchEfiVariables = true;
+			systemd-boot = {
+				enable = true;
+				configurationLimit = 9;
+			};
 		};
 	};
 

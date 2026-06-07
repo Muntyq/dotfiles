@@ -9,7 +9,7 @@ PS1='\[\e[35m\]\[\e[1m\]\u@\h\[\e[0m\]\n\[\e[35m\]\[\e[1m\]\w\[\e[0m\]\[\e[35m\]
 # ls
 alias ls='ls --color=auto'
 alias la='ls -a'
-alias ll='ls -la'
+alias ll='ls -lah'
 
 # Cd
 function cdd() {
@@ -27,7 +27,9 @@ alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
 alias clear='clear && fastfetch'
 
-alias please='sudo!!'
+function pls() {
+	sudo $(fc -ln -1)
+}
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 fastfetch
