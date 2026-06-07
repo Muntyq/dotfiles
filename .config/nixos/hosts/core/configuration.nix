@@ -1,14 +1,13 @@
-{ ... }:
+{ inputs, ... }: {
 
-{
 	imports = [
 		./hardware-configuration.nix
-		../../modules/general-system.nix
+		inputs.home-manager.nixosModules.home-manager
+		../../modules/minimum.nix
 		../../modules/drivers/cpu-intel.nix
 		../../modules/drivers/gpu-nvidia.nix
 	];
 
-	networking.hostName = "ina-core";
-
+	networking.hostName = "core";
 	system.stateVersion = "25.11";
 }

@@ -1,9 +1,10 @@
 {
-	description = "My ultra omega super cool nixOS attempt n.9001_v.41-very_unstable";
+	description = "Nix declaration for the INA SYSTEM MATRIX";
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
 		home-manager = {
 			url = "github:nix-community/home-manager";
@@ -21,7 +22,7 @@
 		};
 	};
 
-	outputs = { nixpkgs, nixpkgs-stable, home-manager, sops-nix, self, ... }@inputs:
+	outputs = { nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, sops-nix, inadev, self, ... }@inputs:
 
 	let
 		mkSystem = { system, hostProfile, userProfile }: nixpkgs.lib.nixosSystem {
@@ -33,27 +34,35 @@
 			modules = [
 				./hosts/${hostProfile}/configuration.nix
 				./modules/users/${userProfile}.nix
-				home-manager.nixosModules.home-manager
 				sops-nix.nixosModules.sops
 			];
 		};
 
 	in {
 		nixosConfigurations = {
-			# Names to change, i want to larp a bit;possible names: Core Mainframe Node Nibble0x08 proto grid monolith archive
-			xps13 = mkSystem {
+			# Be careful if changing userProfile or hostProfile;
+			# host & user folders are referenced implicitly & users have a per-host module selection
+
+			scout = mkSystem {
 				system = "x86_64-linux";
-				hostProfile = "xps13";
+				hostProfile = "scout";
 				userProfile = "munty";
 			};
-			desktop = mkSystem {
+			core = mkSystem {
 				system = "x86_64-linux";
-				hostProfile = "desktop";
+				hostProfile = "core";
 				userProfile = "munty";
 			};
-			#to do
-			# ina-pi
-			# ina-server
+			pebble = mkSystem {
+				system = "aarch64-linux";
+				hostProfile = "pebble"; # pebble-specific checks in minimum.nix
+				userProfile = "munty";
+			};
+			monolith = mkSystem { # to be implemented
+				system = "x86_64-linux";
+				hostProfile = "monolith";
+				userProfile = "munty";
+			};
 		};
 	};
 }

@@ -1,4 +1,4 @@
-{ pkgs, hostProfile, userProfile, ... }: {
+{ pkgs, lib, hostProfile, userProfile, ... }: {
 
 
 # ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗
@@ -27,7 +27,7 @@
 	programs.bash.enable = true;
 	services.dbus = {
 		enable = true;
-		implementation = "broker";
+		implementation = if hostProfile == "pebble" then "dbus" else "broker";
 	};
 
 	# Nix general configs --------------------
@@ -46,9 +46,18 @@
 	nixpkgs.config.allowUnfree = true;
 	users.mutableUsers = false;
 
+	system.autoUpgrade = {
+		enable = true;
+		flake = "/home/${userProfile}/.config/nixos";
+		dates = "Sat *-*-* 06:00:00";
+		persistent = true;
+		allowReboot = true;
+		operation = "switch"; # set to boot to not restart
+	};
+
 	# Bootloader config ----------------------
 
-	boot.loader = {
+	boot.loader = lib.mkIf ( hostProfile != "pebble" ) {
 		efi.canTouchEfiVariables = true;
 		systemd-boot = {
 			enable = true;
@@ -56,36 +65,11 @@
 		};
 	};
 
-	systemd.targets = {
+	systemd.targets = lib.mkIf ( hostProfile != "pebble" ) {
 		sleep.enable = true;
 		suspend.enable = true;
 		hibernate.enable = true;
 		hybrid-sleep.enable = true;
-	};
-
-	systemd.services.nixos-flake-auto-update = {
-		description = "Auto-update & rebuild";
-		serviceConfig = {
-			Type = "oneshot";
-			User = "root";
-		};
-		script = ''
-			set -e
-			cd /home/${userProfile}/.config/nixos
-			${pkgs.nix}/bin/nix flake update
-			/run/current-system/sw/bin/nixos-rebuild switch --flake .#${hostProfile} 2>&1
-			echo -e "\e[1;94mNixOS system flake updated, remember to reboot! >ヮ<\e[0m"
-		'';
-		after = [ "network-online.target" ];
-		requires = [ "network-online.target" ];
-	};
-
-	systemd.timers.nixos-flake-auto-update = {
-		wantedBy = [ "timers.target" ];
-		timerConfig = {
-			OnCalendar = "Sat 06:00";
-			Persistent = true;
-		};
 	};
 	# Use specific kernel
 	# boot.kernelPackages = pkgs.linuxPackages_latest;

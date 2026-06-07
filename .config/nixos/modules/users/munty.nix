@@ -2,21 +2,23 @@
 
 let
   	muntyModules = {
-		xps13 = [
+		scout = [
 			../sops.nix
-			../general-home.nix
+			../general.nix
 			../rice/hyprland.nix
 		];
-		desktop = [
+		core = [
 			../editing.nix
-			../general-home.nix
+			../general.nix
 			../sops.nix
 			../gaming.nix
 			../rice/hyprland.nix
 		];
+		pebble = [
+		];
 	};
 
-  	validProfiles = [ "xps13" "desktop" ];
+  	validProfiles = [ "scout" "core" "pebble" ];
 in {
 	users.users.munty = {
 		isNormalUser = true;
@@ -28,17 +30,6 @@ in {
 			"networkmanager"
 		];
 		shell = pkgs.bash;
-	};
-
-	home-manager = {
-		useGlobalPkgs = true;
-		useUserPackages = true;
-		users.munty = {
-			programs.home-manager.enable = true;
-			home.username = "munty";
-			home.homeDirectory = "/home/munty";
-			home.stateVersion = "25.11";
-		};
 	};
 
 	imports = (muntyModules.${hostProfile} or []);

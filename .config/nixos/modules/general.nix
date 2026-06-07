@@ -8,68 +8,78 @@
 # ██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗
 # ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
 
-	home-manager.users.${userProfile}.home = {
-		packages = with pkgs; [
-			clapboard
-			ghostty
-			fastfetch
-			librewolf            # web browser
-			mpv                  # video player
-			imv                  # image viewer
-			pwvucontrol          # audio mixer
-			kdePackages.dolphin  # file explorer
+	home-manager = {
+		useGlobalPkgs = true;
+		useUserPackages = true;
+		users.${userProfile} = {
+			programs.home-manager.enable = true;
+			home = {
+				username = "${userProfile}";
+				homeDirectory = "/home/${userProfile}";
+				stateVersion = "25.11";
+				packages = with pkgs; [
+					clapboard
+					ghostty
+					fastfetch
+					librewolf            # web browser
+					mpv                  # video player
+					imv                  # image viewer
+					pwvucontrol          # audio mixer
+					kdePackages.dolphin  # file explorer
 
-			# other ------------------------------
-			wine-wayland # use regular wine if incompatibilities arrise
+					# other ------------------------------
+					wine-wayland # use regular wine if incompatibilities arrise
 
-			# neovim compatability thing ---------
-			lua-language-server
-			rust-analyzer
-			bash-language-server
-			clang-tools
-			vscode-langservers-extracted
-			nixd
-			marksman
-			gopls
+					# neovim compatability thing ---------
+					lua-language-server
+					rust-analyzer
+					bash-language-server
+					clang-tools
+					vscode-langservers-extracted
+					nixd
+					marksman
+					gopls
 
-			(vimPlugins.nvim-treesitter.withPlugins (p: [
-				p.go
-				p.gomod
-				p.gosum
-				p.lua
-				p.html
-				p.bash
-				p.nix
-				p.rust
-				p.c
-				p.javascript
-				p.typescript
-				p.css
-				p.json
-				p.yaml
-				p.toml
-				p.markdown
-			]))
+					(vimPlugins.nvim-treesitter.withPlugins (p: [
+						p.go
+						p.gomod
+						p.gosum
+						p.lua
+						p.html
+						p.bash
+						p.nix
+						p.rust
+						p.c
+						p.javascript
+						p.typescript
+						p.css
+						p.json
+						p.yaml
+						p.toml
+						p.markdown
+					]))
 
-			# my own apps -------------------------
-			inputs.inadev.packages.${pkgs.stdenv.hostPlatform.system}.inadev
+					# my own apps -------------------------
+					inputs.inadev.packages.${pkgs.stdenv.hostPlatform.system}.inadev
 
-		];
+				];
 
-		sessionPath = [
-			"$HOME/.local/bin"
-		];
+				sessionPath = [
+					"$HOME/.local/bin"
+				];
 
-		sessionVariables = {
-			EDITOR="nvim";
-			VISUAL="nvim";
-			BROWSER="librewolf";
-			TERMINAL = "ghostty";
+				sessionVariables = {
+					EDITOR="nvim";
+					VISUAL="nvim";
+					BROWSER="librewolf";
+					TERMINAL = "ghostty";
 
-			XDG_CONFIG_HOME = "$HOME/.config";
-			XDG_CACHE_HOME = "$HOME/.cache";
-			XDG_DATA_HOME = "$HOME/.local/share";
-			XDG_STATE_HOME = "$HOME/.local/state";
+					XDG_CONFIG_HOME = "$HOME/.config";
+					XDG_CACHE_HOME = "$HOME/.cache";
+					XDG_DATA_HOME = "$HOME/.local/share";
+					XDG_STATE_HOME = "$HOME/.local/state";
+				};
+			};
 		};
 	};
 
