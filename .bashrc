@@ -13,11 +13,17 @@ alias ll='ls -lah'
 
 # Cd
 function cdd() {
-	dir="$*";
+	local dir="$*";
 	if [[ $# -eq 0 ]]; then
 		dir=${HOME};
 	fi;
 	builtin cd "${dir}" && ls
+}
+function rebuild() {
+	local mode="$1";
+	local host="$2";
+	local dir="${HOME}/.config/nixos";
+	sudo nixos-rebuild "${mode}" --flake "${dir}#${host}";
 }
 
 alias ..='cd ..'
