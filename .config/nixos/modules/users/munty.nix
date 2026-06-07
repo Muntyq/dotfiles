@@ -30,6 +30,9 @@ in {
 			"networkmanager"
 		];
 		shell = pkgs.bash;
+		openssh.authorizedKeys.keys = [
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKWYk6GjHagRY4hUGhfgnq3OFvdcvCaO/S1Dj35lE6k aleix.muntal78@gmail.com"
+		];
 	};
 
 	imports = (muntyModules.${hostProfile} or []);
