@@ -6,8 +6,28 @@
 [[ $- != *i* ]] && return
 PS1='\[\e[35m\]\[\e[1m\]\u@\h\[\e[0m\]\n\[\e[35m\]\[\e[1m\]\w\[\e[0m\]\[\e[35m\] $(git branch --show-current 2>/dev/null | sed "s/.*/ (\0)/")\[\e[0m\]\$ '
 
+# ls
 alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -la'
+
+# Cd
+function cdd() {
+	dir="$*";
+	if [[ $# -eq 0 ]]; then
+		dir=${HOME};
+	fi;
+	builtin cd "${dir}" && ls
+}
+
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
+alias clear='clear && fastfetch'
+
+alias please='sudo!!'
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-alias flake-init='echo "use flake" > .envrc && direnv allow'
+
 fastfetch
