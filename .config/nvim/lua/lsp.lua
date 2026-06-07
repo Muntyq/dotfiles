@@ -28,11 +28,12 @@ blink.setup({
 	completion = {
 		-- Only show docs when manually requested (C-Space again while menu is open)
 		documentation = {
-			auto_show = false,
-			window    = { border = 'rounded' },
+			auto_show = true,
+			window    = { border = 'none' },
 		},
 		menu = {
-			border = 'rounded',
+			border = 'none',
+			winblend = 15, -- opacity, 0 = opaque; 100 = invisible
 			-- Show a little type annotation column on the right
 			draw = {
 				columns = {
@@ -41,6 +42,7 @@ blink.setup({
 				},
 			},
 		},
+
 		-- Don't auto-select or auto-insert — wait for explicit Tab/C-n
 		list = {
 			selection = {
@@ -48,6 +50,12 @@ blink.setup({
 				auto_insert = false,
 			},
 		},
+	},
+
+	-- Signature help popup while typing function args
+	signature = {
+		enabled = true,
+		window = { border = 'none' },
 	},
 
 	sources = {
@@ -60,13 +68,10 @@ blink.setup({
 	appearance = {
 		nerd_font_variant = 'mono',
 	},
-
-	-- Signature help popup while typing function args
-	signature = {
-		enabled = true,
-		window = { border = 'rounded' },
-	},
 })
+vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'BlinkCmpMenuSelection', { bg = 'NONE', reverse = true })
 
 -- LSP Language Servers -------------------------------------------------------------
 
