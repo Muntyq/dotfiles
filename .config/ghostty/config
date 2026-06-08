@@ -27,11 +27,9 @@
 # # separated by equals signs.
 font-family = Hack Nerd Font Mono
 confirm-close-surface = false
-# background-opacity = 0.95
-# background-blur = 20
 background = 1f1f28
 foreground = ffffff
-background-opacity = 0.92
+background-opacity = 0.90
 background-blur = 20
 # command = /usr/bin/zsh -l -i
 window-padding-x = 10
