@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-PS1='\[\e[35m\]\[\e[1m\]\u@\h\[\e[0m\]\n\[\e[35m\]\[\e[1m\]\w\[\e[0m\]\[\e[35m\] $(git branch --show-current 2>/dev/null | sed "s/.*/ (\0)/")\[\e[0m\]\$ '
-
+PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\[\e[38;5;98m\][\[\e[38;5;215m\]\u\[\e[0m\]@\[\e[38;5;147m\]\h\[\e[38;5;98m\]] \[\e[2m\]$( [ -n "$PS1_CMD1" ] && echo "($PS1_CMD1 \e[38;5;222m\]\e[0m)" )\[\e[0m\] \n\[\e[2m\]\w\[\e[0m\]  '
+#
 # ls
 alias ls='ls --color=auto'
 alias la='ls -a'

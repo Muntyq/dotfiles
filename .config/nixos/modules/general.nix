@@ -95,6 +95,10 @@
 		nix-direnv.enable = true;
 	};
 
+	# aarch64-linux emulator
+
+	boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
 	# Torrent ---------------------------------------------
 
 	services.rtorrent = {

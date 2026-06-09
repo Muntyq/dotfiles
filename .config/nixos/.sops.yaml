@@ -1,9 +1,11 @@
 keys:
-- &munty age1x0vpztadrqpkaty4ear38w5ukv0eq020y3wp8ccyayhyamg4yu0qkxp5ku
 - &xps13 age1yrh88x7d4pvwa676f7c8hm20uykd6fp3lvf76wc93duussvqd4rshc2tc0
+- &pebble age1ww9v7yuqcxjy07zu83rywjl7h2ruuf4m9clmp4u5ushfudka4yeqe9smhg
+- &core age1903cvjuhfndwlt2nujyu23mp5qyxgu7mt6zvmmdrtw5y6y8fyd5q2ajvkp
 
 creation_rules:
-- path_regex: secrets/.*\.yaml$
+- path_regex: secrets/.*
   key_groups:
     - age:
-      - *munty
+      - *pebble
+      - *core

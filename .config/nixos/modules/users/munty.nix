@@ -15,6 +15,7 @@ let
 			../rice/hyprland.nix
 		];
 		pebble = [
+			../sops.nix
 		];
 	};
 
