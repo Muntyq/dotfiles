@@ -8,6 +8,8 @@
 		../../modules/drivers/gpu-nvidia.nix
 	];
 
+	nix.settings.secretKeyFiles = [ "/etc/nix/secret-key.pem" ];
+
 	networking.hostName = "core";
 	system.stateVersion = "25.11";
 }
