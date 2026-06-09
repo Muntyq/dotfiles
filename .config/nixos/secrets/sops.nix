@@ -1,7 +1,8 @@
 { userProfile, ... }: {
 
+	# (imported from hosts)
 	sops = {
-		defaultSopsFile = ../secrets/secrets.yaml;
+		defaultSopsFile = ./secrets.yaml;
 		defaultSopsFormat = "yaml";
 
 		age = {

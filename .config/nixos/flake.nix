@@ -33,7 +33,7 @@
 			};
 			modules = [
 				./hosts/${hostProfile}/configuration.nix
-				./modules/users/${userProfile}.nix
+				./users/${userProfile}.nix
 				sops-nix.nixosModules.sops
 			];
 		};
@@ -43,24 +43,24 @@
 			# Be careful if changing userProfile or hostProfile;
 			# host & user folders are referenced implicitly & users have a per-host module selection
 
-			scout = mkSystem {
+			probe = mkSystem { # xps13
 				system = "x86_64-linux";
-				hostProfile = "scout";
+				hostProfile = "probe";
 				userProfile = "munty";
 			};
-			core = mkSystem {
+			core = mkSystem { # main desktop
 				system = "x86_64-linux";
 				hostProfile = "core";
 				userProfile = "munty";
 			};
-			pebble = mkSystem {
+			pebble = mkSystem { # raspberry-pi 4 b
 				system = "aarch64-linux";
 				hostProfile = "pebble"; # pebble-specific checks in minimum.nix
 				userProfile = "munty";
 			};
-			monolith = mkSystem { # to be implemented
+			archive = mkSystem { # main server
 				system = "x86_64-linux";
-				hostProfile = "monolith";
+				hostProfile = "archive"; # archive-specific cheks in minimum.nix
 				userProfile = "munty";
 			};
 		};

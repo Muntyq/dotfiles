@@ -2,11 +2,10 @@
 
 	imports = [
 		./hardware-configuration.nix
-		inputs.nixos-hardware.nixosModules.raspberry-pi-4
 		../../secrets/sops.nix
 		../../modules/minimum.nix
 	];
 
-	networking.hostName = "pebble";
+	networking.hostName = "archive";
 	system.stateVersion = "25.11";
 }

@@ -2,24 +2,24 @@
 
 let
   	muntyModules = {
-		scout = [
-			../sops.nix
-			../general.nix
-			../rice/hyprland.nix
+		probe = [
+			../modules/general.nix
+			../modules/rice/hyprland.nix
 		];
 		core = [
-			../editing.nix
-			../general.nix
-			../sops.nix
-			../gaming.nix
-			../rice/hyprland.nix
+			../modules/editing.nix
+			../modules/general.nix
+			../modules/sops.nix
+			../modules/gaming.nix
+			../modules/rice/hyprland.nix
 		];
 		pebble = [
-			../sops.nix
+		];
+		archive = [
 		];
 	};
 
-  	validProfiles = [ "scout" "core" "pebble" ];
+  	validProfiles = [ "probe" "core" "pebble" "archive" ];
 in {
 	users.users.munty = {
 		isNormalUser = true;
@@ -32,7 +32,7 @@ in {
 		];
 		shell = pkgs.bash;
 		openssh.authorizedKeys.keys = [
-			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKWYk6GjHagRY4hUGhfgnq3OFvdcvCaO/S1Dj35lE6k aleix.muntal78@gmail.com"
+			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKWYk6GjHagRY4hUGhfgnq3OFvdcvCaO/S1Dj35lE6k ina@core"
 		];
 	};
 
