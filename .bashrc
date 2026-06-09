@@ -37,5 +37,6 @@ function pls() {
 	sudo $(fc -ln -1)
 }
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+# eval "$(direnv hook bash)"
 
 fastfetch
