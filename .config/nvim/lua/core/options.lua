@@ -14,15 +14,15 @@ opt.cmdheight = 1
 opt.scrolloff = 10
 opt.sidescrolloff = 10
 opt.wrap = true
-opt.tabstop = 5
-opt.shiftwidth = 5
---opt.softtabstop = 5
-opt.expandtab = false
+opt.tabstop = 8      -- default
+opt.shiftwidth = 4   -- actual indent
+opt.softtabstop = -1 -- follow shiftwidth
+opt.expandtab = true --use spaces, not tabs
 opt.smartindent = true
 opt.breakindent = true
 opt.autoindent = true
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = '› ', trail = '·', nbsp = '␣' } --'› ''» '
 
 -- Tmux ----------------
 opt.splitright = true
@@ -48,9 +48,9 @@ opt.incsearch = true
 
 -- Misc ----------------
 opt.mouse = "a"
-opt.pumheight = 10 --popup menu heigh
+opt.pumheight = 10                            --popup menu heigh
 opt.completeopt = "menuone,noinsert,noselect" --auto complete things if using nvim-cmp probably use menu,menuone
-opt.shortmess:append("c") --search info, its about ignoring info
+opt.shortmess:append("c")                     --search info, its about ignoring info
 opt.confirm = true
 
 vim.schedule(function() opt.clipboard = "unnamedplus" end)
