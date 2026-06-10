@@ -31,6 +31,8 @@ nixos-rebuild switch \
   --build-host munty@core \
   --elevate=sudo \
   --ask-elevate-password
+
+sops updatekeys secrets/secrets.yaml
 ## Current Setup
 
 nixos/ {
