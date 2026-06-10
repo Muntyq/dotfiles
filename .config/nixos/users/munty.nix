@@ -2,14 +2,13 @@
 
 let
   	muntyModules = {
-		probe = [
+		proxy = [
 			../modules/general.nix
 			../modules/rice/hyprland.nix
 		];
 		core = [
 			../modules/editing.nix
 			../modules/general.nix
-			../modules/sops.nix
 			../modules/gaming.nix
 			../modules/rice/hyprland.nix
 		];
@@ -19,7 +18,7 @@ let
 		];
 	};
 
-  	validProfiles = [ "probe" "core" "pebble" "archive" ];
+  	validProfiles = [ "proxy" "core" "pebble" "archive" ];
 in {
 	users.users.munty = {
 		isNormalUser = true;

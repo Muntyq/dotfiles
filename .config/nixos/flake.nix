@@ -43,9 +43,9 @@
 			# Be careful if changing userProfile or hostProfile;
 			# host & user folders are referenced implicitly & users have a per-host module selection
 
-			probe = mkSystem { # xps13
+			proxy = mkSystem { # xps13
 				system = "x86_64-linux";
-				hostProfile = "probe";
+				hostProfile = "proxy";
 				userProfile = "munty";
 			};
 			core = mkSystem { # main desktop

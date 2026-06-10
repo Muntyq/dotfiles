@@ -9,6 +9,6 @@
 		../../modules/drivers/gpu-intel.nix
 	];
 
-	networking.hostName = "probe";
+	networking.hostName = "proxy";
 	system.stateVersion = "25.11";
 }
