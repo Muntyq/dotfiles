@@ -4,15 +4,18 @@ let
   	muntyModules = {
 		proxy = [
 			../modules/general.nix
+                        ../secrets/sops.nix
 			../modules/rice/hyprland.nix
 		];
 		core = [
 			../modules/editing.nix
+                        ../secrets/sops.nix
 			../modules/general.nix
 			../modules/gaming.nix
 			../modules/rice/hyprland.nix
 		];
 		pebble = [
+                        ../secrets/sops.nix
                         ../modules/services/nginx.nix
                         ../modules/services/ukuma.nix
 		];

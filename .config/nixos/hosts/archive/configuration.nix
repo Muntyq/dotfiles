@@ -2,7 +2,6 @@
 
 	imports = [
 		./hardware-configuration.nix
-		../../secrets/sops.nix
 		../../modules/minimum.nix
 	];
 

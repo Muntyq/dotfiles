@@ -3,7 +3,6 @@
 	imports = [
 		./hardware-configuration.nix
 		inputs.nixos-hardware.nixosModules.raspberry-pi-4
-		../../secrets/sops.nix
 		../../modules/minimum.nix
 	];
 
