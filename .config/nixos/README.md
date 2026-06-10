@@ -16,7 +16,7 @@ Fix duplicate bug in storage.nix
 [ ] - Add overlays (if i need to, have to look them up)
 [ ] - Add raspberry pi host and configure it
 [ ] - Add generic host and configure it
-[ ] - Automate pc instalation 
+[ ] - Automate pc instalation
 [ ] - LARP config, remove AI shit, polish setup
 [ ] - Polish boot if startup slow ass shit, check it, add boot image thingy?
 [ ] - Add server config
@@ -25,6 +25,12 @@ Fix duplicate bug in storage.nix
 [ ] - fix modularity issues; sops only for munty rn
 [ ] - add config file (if its even possible)
 
+nixos-rebuild switch \
+  --flake .config/nixos#pebble \
+  --target-host munty@192.168.1.45 \
+  --build-host munty@core \
+  --sudo \
+  --ask-elevate-password
 ## Current Setup
 
 nixos/ {
@@ -45,7 +51,7 @@ nixos/ {
 			gpu-intel.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/drivers/gpu-intel.nix };
 			gpu-nvidia.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/drivers/gpu-nvidia.nix };
 		};
-		rice / { 
+		rice / {
 			hyprland.nix { https://github.com/Muntyq/dotfiles/blob/main/.config/nixos/modules/rice/hyprland.nix };
 			river.nix { //to do };
 		};
