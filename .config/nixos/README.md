@@ -29,7 +29,7 @@ nixos-rebuild switch \
   --flake .config/nixos#pebble \
   --target-host munty@192.168.1.45 \
   --build-host munty@core \
-  --sudo \
+  --elevate=sudo \
   --ask-elevate-password
 ## Current Setup
 

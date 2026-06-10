@@ -14,6 +14,7 @@ let
 		];
 		pebble = [
                         ../modules/services/nginx.nix
+                        ../modules/services/ukuma.nix
 		];
 		archive = [
 		];
