@@ -19,15 +19,13 @@ function cdd() {
 	fi;
 	builtin cd "${dir}" && ls
 }
+alias cd='cdd'
 function rebuild() {
 	local mode="$1";
 	local host="$2";
 	local dir="${HOME}/.config/nixos";
 	sudo nixos-rebuild "${mode}" --flake "${dir}#${host}";
 }
-
-alias ..='cd ..'
-alias ...='cd ../..'
 
 alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
@@ -36,7 +34,9 @@ alias clear='clear && fastfetch'
 function pls() {
 	sudo $(fc -ln -1)
 }
+
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-# eval "$(direnv hook bash)"
+eval "$(direnv hook bash)"
+export TERM=xterm-256color
 
 fastfetch

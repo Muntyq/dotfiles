@@ -63,6 +63,7 @@
 		resumeDevice = "/dev/disk/by-label/swap";
 		loader = {
 			efi.canTouchEfiVariables = true;
+                        timeout = 1;
 			systemd-boot = {
 				enable = true;
 				configurationLimit = 9;

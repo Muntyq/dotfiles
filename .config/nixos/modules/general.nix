@@ -31,33 +31,33 @@
 					wine-wayland # use regular wine if incompatibilities arrise
 
 					# neovim compatability thing ---------
-					lua-language-server
-					rust-analyzer
-					bash-language-server
-					clang-tools
-					vscode-langservers-extracted
-					nixd
-					marksman
-					gopls
-
-					(vimPlugins.nvim-treesitter.withPlugins (p: [
-						p.go
-						p.gomod
-						p.gosum
-						p.lua
-						p.html
-						p.bash
-						p.nix
-						p.rust
-						p.c
-						p.javascript
-						p.typescript
-						p.css
-						p.json
-						p.yaml
-						p.toml
-						p.markdown
-					]))
+					# lua-language-server
+					# rust-analyzer
+					# bash-language-server
+					# clang-tools
+					# vscode-langservers-extracted
+					# nixd
+					# marksman
+					# gopls
+					#
+					# (vimPlugins.nvim-treesitter.withPlugins (p: [
+					# 	p.go
+					# 	p.gomod
+					# 	p.gosum
+					# 	p.lua
+					# 	p.html
+					# 	p.bash
+					# 	p.nix
+					# 	p.rust
+					# 	p.c
+					# 	p.javascript
+					# 	p.typescript
+					# 	p.css
+					# 	p.json
+					# 	p.yaml
+					# 	p.toml
+					# 	p.markdown
+					# ]))
 
 					# my own apps -------------------------
 					inputs.inadev.packages.${pkgs.stdenv.hostPlatform.system}.inadev
