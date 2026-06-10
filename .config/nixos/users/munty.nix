@@ -13,6 +13,7 @@ let
 			../modules/rice/hyprland.nix
 		];
 		pebble = [
+                        ../modules/services/nginx.nix
 		];
 		archive = [
 		];
