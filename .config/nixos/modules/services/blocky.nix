@@ -11,15 +11,25 @@
             ];
 
             blocking = {
-                blackList.ads = [
-                    "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
-                ];
-                clientGroupsBlock.default = [ "ads" ];
+                denylists = {
+                    ads = [
+                        "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+                        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/domains/ultimate.txt"
+                    ];
+                    custom = [
+                    ];
+                };
+                clientGroupsBlock.default = [ "ads" "custom" ];
             };
 
             bootstrapDns = {
-                upstream = "https://1.1.1.1/dns-querry";
-                ips = [ "1.1.1.1"];
+                upstream = "https://1.1.1.1/dns-query";
+                ips = [ "1.1.1.1" "1.0.0.1" ];
+            };
+
+            queryLog = {
+                type = "console";
+                target = "stdout";
             };
         };
     };
@@ -28,4 +38,5 @@
         allowedTCPPorts = [ 53 ];
         allowedUDPPorts = [ 53 ];
     };
+    networking.nameservers = [ "127.0.0.1" ]; # 1.1.1.1 is from headscale
 }

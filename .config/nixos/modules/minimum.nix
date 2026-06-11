@@ -23,6 +23,7 @@
 		age
 		btop
 		unar   # unzip
+                dig
 	];
 
 	services.openssh.enable = true;

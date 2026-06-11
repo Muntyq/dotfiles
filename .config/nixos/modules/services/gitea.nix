@@ -18,14 +18,12 @@
             };
 
             service = {
-                DISABLE_REGISTRATION = true;
+                DISABLE_REGISTRATION = false;
             };
 
             log.LEVEL = "Warn";
         };
     };
-
-    networking.firewall.allowedTCPPorts = [ 2222 ];
 
     services.nginx.virtualHosts."git.muntyq.com" = {
         useACMEHost = "muntyq.com";
@@ -35,4 +33,6 @@
             proxyWebsockets = true;
         };
     };
+
+    networking.firewall.allowedTCPPorts = [ 2222 ];
 }
