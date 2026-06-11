@@ -18,6 +18,8 @@ let
                         ../secrets/sops.nix
                         ../modules/services/nginx.nix
                         ../modules/services/ukuma.nix
+                        ../modules/services/blocky.nix
+                        ../modules/services/gitea.nix
 		];
 		archive = [
 		];
