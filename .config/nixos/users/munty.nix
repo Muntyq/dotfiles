@@ -20,6 +20,7 @@ let
                         ../modules/services/ukuma.nix
                         ../modules/services/pihole.nix
                         ../modules/services/gitea.nix
+                        ../modules/services/cloudflared.nix
 		];
 		archive = [
 		];

@@ -26,9 +26,18 @@
         recommendedProxySettings = true;
 
         # Default catch-all
-        virtualHosts."_" = {
+        # virtualHosts."_" = {
+        #     default = true;
+        #     rejectSSL = true;
+        # };
+
+        virtualHosts."default-ssl" = {
+            useACMEHost = "muntyq.com";
+            forceSSL = true;
             default = true;
-            rejectSSL = true;
+            locations."/" = {
+                return = "444";
+            };
         };
 
         # Skeleton vhost — uncomment and duplicate per service
