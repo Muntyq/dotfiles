@@ -40,6 +40,8 @@ in
 
       blocking.blackLists.ads = [
         "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+        "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/ultimate.txt"
+        "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
       ];
 
       blocking.clientGroupsBlock.default = [ "ads" ];
