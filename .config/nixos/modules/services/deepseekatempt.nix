@@ -1,12 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   domain = "muntyq.com";
   localIP = "192.168.1.45";
+    interface = "end0"; # for @core enp3s0
 in
 {
   networking = {
-    interfaces.end0.ipv4.addresses = [{
+    interfaces."${interface}".ipv4.addresses = [{
       address = "${localIP}";
       prefixLength = 24;
     }];
@@ -16,17 +17,54 @@ in
     firewall = {
       enable = true;
       allowedTCPPorts = [ 80 443 ];
-      interfaces.end0 = {
+      interfaces."${interface}" = {
         allowedTCPPorts = [ 22 ];
         allowedUDPPorts = [ 53 ];
       };
     };
   };
 
+    # services.pihole-ftl = {
+    #     enable = true;
+    #     openFirewallDNS = true;
+    #     settings = {
+    #         dns = {
+    #             upstreams = [ "1.1.1.1" "8.8.8.8" ];
+    #             hosts = [
+    #                 "git.${domain} ${localIP}"
+    #                 "status.${domain} ${localIP}"
+    #                 "dns.${domain} ${localIP}"
+    #                 "hs.${domain} ${localIP}"
+    #             ];
+    #         };
+    #     };
+    #     lists = [
+    #         {
+    #             url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
+    #             type = "block";
+    #             enabled = true;
+    #             description = "hagezi blocklist";
+    #         }
+    #         {
+    #             url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/ultimate.txt";
+    #             type = "block";
+    #             enabled = true;
+    #             description = "ultimate block";
+    #         }
+    #     ];
+    # };
+    #
+    # services.pihole-web = {
+    #     enable = true;
+    #     ports = [ "8000" ];
+    # };
   # ============================================
   # BLOCKY — DNS ad blocking (native nixpkgs)
   # ============================================
-
+systemd.services.blocky = {
+  after = [ "network-online.target" ];
+  wants = [ "network-online.target" ];
+};
   services.blocky = {
     enable = true;
 
@@ -38,43 +76,27 @@ in
         "1.0.0.1"
       ];
 
-      blocking.blackLists.ads = [
-        "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+      blocking.denylists.ads = [
         "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/ultimate.txt"
+        "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
         "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
+        "https://perflyst.github.io/PiHoleBlocklist/SmartTV.txt"
       ];
 
       blocking.clientGroupsBlock.default = [ "ads" ];
+      bootstrapDns = {
+          upstream = "https://1.1.1.1/dns-query";
+          ips = [ "1.1.1.1" "1.0.0.1" ];
+        };
 
       customDNS.mapping = {
-        "git.${domain}" = "${localIP}";
-        "status.${domain}" = "${localIP}";
+        # "git.${domain}" = "${localIP}";
+        # "status.${domain}" = "${localIP}";
         "vault.${domain}" = "${localIP}";
         "notes.${domain}" = "${localIP}";
       };
     };
   };
-
-  # ============================================
-  # PI-HOLE — Resolve all your domains locally
-  # ============================================
-
-  # services.piholeftl = {
-  #   enable = true;
-  #   interface = "0.0.0.0";
-  #   upstreamDNS = [ "1.1.1.1" ];
-  #   adlists = [
-  #     "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
-  #   ];
-  #
-  #   # All your services resolve to your server locally
-  #   customDNS = {
-  #     "git.${domain}" = "${localIP}";
-  #     "status.${domain}" = "${localIP}";
-  #     # "vault.${domain}" = ${localIP};
-  #     # "notes.${domain}" = ${localIP};
-  #   };
-  # };
 
   # ============================================
   # NGINX — Same domain names for everyone
@@ -96,7 +118,7 @@ in
       };
 
       # Private: accessible locally + via Headscale
-      "vault.${domain}" = {
+      "dns.${domain}" = {
         listen = [ { addr = "0.0.0.0"; port = 80; } ];
         locations."/".proxyPass = "http://127.0.0.1:8000";
       };
@@ -130,6 +152,7 @@ in
         credentialsFile = config.sops.secrets."cloudflare-tunnel-creds".path;
         ingress = {
           "git.${domain}" = "http://localhost:80";
+            "hs.${domain}" = "http://localhost:80";
           "status.${domain}" = "http://localhost:80";
           # vault and notes NOT here — they stay private
           default = "http_status:404";
@@ -147,8 +170,8 @@ in
     enable = true;
 
     settings = {
-      server_url = "https://headscale.${domain}";
-      listen_addr = "127.0.0.1:8080";
+      server_url = "https://hs.${domain}";
+      listen_addr = "0.0.0.0:8080";
       ip_prefixes = [ "100.64.0.0/10" ];
 
       dns = {
@@ -157,12 +180,13 @@ in
         extra_records = [
           { name = "vault.${domain}"; type = "A"; value = "${localIP}"; }
           { name = "notes.${domain}"; type = "A"; value = "${localIP}"; }
+          # { name = "status.${domain}"; type = "A"; value = "${localIP}"; }
         ];
       };
     };
   };
 
-  services.nginx.virtualHosts."headscale.${domain}" = {
+  services.nginx.virtualHosts."hs.${domain}" = {
     listen = [ { addr = "0.0.0.0"; port = 80; } ];
     locations."/".proxyPass = "http://127.0.0.1:8080";
   };
@@ -174,4 +198,14 @@ in
       HOST = "127.0.0.1";
     };
   };
+    services.gitea = {
+        enable = true;
+        settings = {
+          server = {
+            DOMAIN = "git.${domain}";
+            ROOT_URL = "https://git.${domain}";
+            HTTP_PORT = 3000;
+          };
+        };
+    };
 }
