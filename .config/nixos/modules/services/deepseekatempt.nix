@@ -90,8 +90,8 @@ systemd.services.blocky = {
         };
 
       customDNS.mapping = {
-        # "git.${domain}" = "${localIP}";
-        # "status.${domain}" = "${localIP}";
+        "git.${domain}" = "${localIP}";
+        "status.${domain}" = "${localIP}";
         "vault.${domain}" = "${localIP}";
         "notes.${domain}" = "${localIP}";
       };
