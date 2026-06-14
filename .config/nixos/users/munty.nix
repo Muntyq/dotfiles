@@ -18,8 +18,7 @@ let
                         ../secrets/sops.nix
                         ../modules/services/domain.nix
                         ../modules/services/ukuma.nix
-                        ../modules/services/gitea.nix
-                        # ../modules/services/domain_old.nix
+                        ../modules/services/forgejo.nix
 		];
 		archive = [
 		];

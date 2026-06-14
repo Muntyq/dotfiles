@@ -25,7 +25,10 @@ in {
         "${subdomain}.${domain}" = {
             useACMEHost = "${domain}";
             forceSSL = true;
-            locations."/".proxyPass = "http://127.0.0.1:${port}";
+            locations."/" = {
+                proxyPass = "http://127.0.0.1:${port}";
+                proxyWebsockets = true; # if needed
+            };
         };
     };
 }

@@ -11,15 +11,17 @@ let
     tunnel = "piper";
 
 in {
-
-    services.gitea = {
+    services.forgejo = {
         enable = true;
+        database.type = "sqlite";
+
         settings = {
             server = {
                 DOMAIN = "${subdomain}.${domain}";
-                ROOT_URL = "https://${subdomain}.${domain}";
+                ROOT_URL = "https://${subdomain}.${domain}/";
                 HTTP_PORT = lib.toInt port;
             };
+        service.DISABLE_REGISTRATION = false;
         };
     };
 

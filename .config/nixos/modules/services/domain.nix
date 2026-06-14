@@ -50,30 +50,6 @@ in {
 
     # Cloudflared setup -------------------------------------
 
-    systemd.services.cloudflared = {
-        # after, wants and requires probably inecesary, too scared to touch
-        # on reboot it usually fails anyways, restart is there that reason
-        after = [ "blocky.service" "network-online.target" ];
-        wants = [ "blocky.service" "network-online.target" ];
-        requires = [ "blocky.service" ];
-        serviceConfig = {
-            Restart = "on-failure";
-            RestartSec = 10;
-        };
-    };
-
-    # ditto of cloudflare-api-token
-    users.users.cloudflared = {
-        isSystemUser = true;
-        group = "cloudflared";
-    };
-    users.groups.cloudflared = {};
-    sops.secrets."cloudflare-tunnel-creds" = {
-        owner = "cloudflared";
-        group = "cloudflared";
-        mode = "0640";
-    };
-
     services.cloudflared = {
         enable = true;
         tunnels."${tunnel}"= {
@@ -84,6 +60,32 @@ in {
             };
             default = "http_status:404";
         };
+    };
+
+    systemd.services.cloudflared = {
+        # "after", "wants" and "requires" probably inecesary, too scared to touch
+        # on reboot it usually fails anyways, restart is there that reason
+        after = [ "blocky.service" "network-online.target" ];
+        wants = [ "blocky.service" "network-online.target" ];
+        requires = [ "blocky.service" ];
+        serviceConfig = {
+            Restart = "on-failure";
+            RestartSec = 30;
+            StartLimitBurst = 5;
+            StartLimitIntervalSec = 60;
+        };
+    };
+
+# ditto of cloudflare-api-token
+    users.users.cloudflared = {
+        isSystemUser = true;
+        group = "cloudflared";
+    };
+    users.groups.cloudflared = {};
+    sops.secrets."cloudflare-tunnel-creds" = {
+        owner = "cloudflared";
+        group = "cloudflared";
+        mode = "0640";
     };
 
 
