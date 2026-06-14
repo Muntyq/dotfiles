@@ -42,17 +42,17 @@
 
 	nix.gc = {
 		automatic = true;
-		dates = "Mon 06:00";
+		dates = "Tue 06:00";
 		options = "--delete-older-than 30d";
 	};
 
 	nixpkgs.config.allowUnfree = true;
 	users.mutableUsers = false;
 
-	system.autoUpgrade = {
+	system.autoUpgrade = lib.mkIf ( hostProfile != "pebble" ) {
 		enable = true;
 		flake = "/home/${userProfile}/.config/nixos";
-		dates = "Sat *-*-* 06:00:00";
+		dates = "Mon *-*-* 06:00:00";
 		persistent = true;
 		allowReboot = true;
 		operation = "switch"; # set to boot to not restart

@@ -25,6 +25,8 @@ Fix duplicate bug in storage.nix
 [ ] - fix modularity issues; sops only for munty rn
 [ ] - add config file (if its even possible)
 
+scp -r /home/munty/.config/nixos/ munty@192.168.1.45:/home/munty/.config/nixos
+
 nixos-rebuild switch \
   --flake .config/nixos#pebble \
   --target-host munty@192.168.1.45 \
