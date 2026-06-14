@@ -14,6 +14,8 @@
 			river
 		];
 
+                programs.vesktop.enable = true;
+
 	# Font ---------------------------------------------
 		fonts.fontconfig = {
 			enable = true;
