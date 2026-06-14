@@ -13,7 +13,7 @@ let
 in {
     services.forgejo = {
         enable = true;
-        database.type = "sqlite";
+        database.type = "sqlite3";
 
         settings = {
             server = {
