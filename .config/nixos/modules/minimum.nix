@@ -49,14 +49,14 @@
 	nixpkgs.config.allowUnfree = true;
 	users.mutableUsers = false;
 
-	# system.autoUpgrade = {
-	# 	enable = true;
-	# 	flake = "/home/${userProfile}/.config/nixos";
-	# 	dates = "Sat *-*-* 06:00:00";
-	# 	persistent = true;
-	# 	allowReboot = true;
-	# 	operation = "switch"; # set to boot to not restart
-	# };
+	system.autoUpgrade = {
+		enable = true;
+		flake = "/home/${userProfile}/.config/nixos";
+		dates = "Sat *-*-* 06:00:00";
+		persistent = true;
+		allowReboot = true;
+		operation = "switch"; # set to boot to not restart
+	};
 
 	# Bootloader config ----------------------
 

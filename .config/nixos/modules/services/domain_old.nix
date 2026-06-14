@@ -1,11 +1,10 @@
 { config, pkgs, lib, ... }:
 
 let
-  domain = "muntyq.com";
-  localIP = "192.168.1.45";
+    domain = "muntyq.com";
+    localIP = "192.168.1.45";
     interface = "end0"; # for @core enp3s0
-in
-{
+in {
   networking = {
     interfaces."${interface}".ipv4.addresses = [{
       address = "${localIP}";

@@ -16,12 +16,10 @@ let
 		];
 		pebble = [
                         ../secrets/sops.nix
-                        ../modules/services/deepseekatempt.nix
-                        # ../modules/services/nginx.nix
-                        # ../modules/services/ukuma.nix
-                        # ../modules/services/pihole.nix
-                        # ../modules/services/gitea.nix
-                        # ../modules/services/cloudflared.nix
+                        ../modules/services/domain.nix
+                        ../modules/services/ukuma.nix
+                        ../modules/services/gitea.nix
+                        # ../modules/services/domain_old.nix
 		];
 		archive = [
 		];

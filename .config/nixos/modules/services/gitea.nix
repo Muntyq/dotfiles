@@ -1,38 +1,33 @@
-{ config, lib, ... }: {
+{ config, pkgs, lib, ... }:
+
+let
+
+    subdomain = "git";
+    port = "3000";
+
+    # leave this be
+    domain = "muntyq.com";
+    localIP = "192.168.1.45";
+    tunnel = "piper";
+
+in {
 
     services.gitea = {
         enable = true;
-        stateDir = "/var/lib/gitea";
-
         settings = {
             server = {
-                DOMAIN = "git.muntyq.com";
-                ROOT_URL = "https://git.muntyq.com";
-                HTTP_ADDR = "127.0.0.1";
-                HTTP_PORT = 3000;
-
-                START_SSH_SERVER = true;
-                SSH_DOMAIN = "git.muntyq.com";
-                SSH_PORT = 2222;
-                SSH_LISTEN_PORT = 2222;
+                DOMAIN = "${subdomain}.${domain}";
+                ROOT_URL = "https://${subdomain}.${domain}";
+                HTTP_PORT = lib.toInt port;
             };
-
-            service = {
-                DISABLE_REGISTRATION = false;
-            };
-
-            log.LEVEL = "Warn";
         };
     };
 
-    services.nginx.virtualHosts."git.muntyq.com" = {
-        useACMEHost = "muntyq.com";
+    # public; cloudflared + nginx
+    services.cloudflared.tunnels."${tunnel}".ingress."${subdomain}.${domain}" = "http://localhost:80";
+    services.nginx.virtualHosts."${subdomain}.${domain}" = {
+        useACMEHost = "${domain}";
         forceSSL = true;
-        locations."/" = {
-            proxyPass = "http://127.0.0.1:3000";
-            proxyWebsockets = true;
-        };
+        locations."/".proxyPass = "http://127.0.0.1:${port}";
     };
-
-    networking.firewall.allowedTCPPorts = [ 2222 ];
 }
