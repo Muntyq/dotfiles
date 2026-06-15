@@ -32,7 +32,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal    = 'ghostty'
+local terminal    = 'foot'
 local fileManager = "dolphin"
 local menu        = "wofi --show drun"
 local screenshot  = "hyprshot -m output --clipboard-only --freeze"

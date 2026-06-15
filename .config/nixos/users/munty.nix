@@ -37,7 +37,7 @@ in {
 		];
 		shell = pkgs.bash;
 		openssh.authorizedKeys.keys = [
-			"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKWYk6GjHagRY4hUGhfgnq3OFvdcvCaO/S1Dj35lE6k ina@core"
+                        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBrw5YYLJvCartvAP/eBQGIOgulLgiwAJgJa6rd8uODY ina@core"
                         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKDpxzJPm4etFbyz1Z3Fxe26CUP3ZcX4czrINouAG1rH ina@proxy"
 		];
 	};

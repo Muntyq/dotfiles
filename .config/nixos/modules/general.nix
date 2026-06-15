@@ -33,11 +33,11 @@
 					# neovim compatability thing ---------
 					# lua-language-server
 					# rust-analyzer
-					# bash-language-server
+					bash-language-server
 					# clang-tools
 					# vscode-langservers-extracted
-					# nixd
-					# marksman
+					nixd
+					marksman
 					# gopls
 					#
 					# (vimPlugins.nvim-treesitter.withPlugins (p: [

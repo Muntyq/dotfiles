@@ -15,6 +15,7 @@
 	environment.systemPackages = with pkgs; [
 		git
 		neovim
+                tmux
 		wget
 		curl
 		sops
@@ -24,6 +25,7 @@
 		btop
 		unar   # unzip
                 dig
+                fzf
 	];
 
 	services.openssh.enable = true;
@@ -42,7 +44,7 @@
 
 	nix.gc = {
 		automatic = true;
-		dates = "Tue 06:00";
+		dates = "Mon 06:00";
 		options = "--delete-older-than 30d";
 	};
 
@@ -52,7 +54,7 @@
 	system.autoUpgrade = lib.mkIf ( hostProfile != "pebble" ) {
 		enable = true;
 		flake = "/home/${userProfile}/.config/nixos";
-		dates = "Mon *-*-* 06:00:00";
+		dates = "Sat *-*-* 06:00:00";
 		persistent = true;
 		allowReboot = true;
 		operation = "switch"; # set to boot to not restart
