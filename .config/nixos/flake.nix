@@ -17,7 +17,7 @@
 		};
 
 		inadev = {
-			url = "github:Muntyq/inadev";
+			url = "https://git.muntyq.com/munty/inadev/archive/main.tar.gz";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};

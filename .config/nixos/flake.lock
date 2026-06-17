@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781365335,
-        "narHash": "sha256-zqDBhXMzfbdlO7F2bGHe7MOtB3xngd/+4ieMHDC+ZXo=",
+        "lastModified": 1781711298,
+        "narHash": "sha256-/lyUJK9dwG16FGlL6Yz+yMmHhRSWCXiyzjvaohIrwbw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5b6f5733726a1b2ccafb5dec6ac4ca7299fad66c",
+        "rev": "fa4e2f7e101c2a656bdd910e49ae485bd2d8a358",
         "type": "github"
       },
       "original": {
@@ -28,17 +28,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1780939411,
-        "narHash": "sha256-o6iHUmnqUrgY10ZtjtYz82ImhaIYRPQz9TrxGUw/B48=",
-        "owner": "Muntyq",
-        "repo": "inadev",
-        "rev": "78d6cbf67e397aeac5d32603b6cb0e1a7cb62929",
-        "type": "github"
+        "lastModified": 1781713559,
+        "narHash": "sha256-9nhL+0scw0kIENzK1VOG9lUAySJGFBDXKK8SQ8wSrnw=",
+        "rev": "90bdf32db8fc795967dac22d9a081cbbc6bc7eb3",
+        "type": "tarball",
+        "url": "https://git.muntyq.com/api/v1/repos/munty/inadev/archive/90bdf32db8fc795967dac22d9a081cbbc6bc7eb3.tar.gz"
       },
       "original": {
-        "owner": "Muntyq",
-        "repo": "inadev",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://git.muntyq.com/munty/inadev/archive/main.tar.gz"
       }
     },
     "nixos-hardware": {
@@ -46,11 +44,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1781168557,
-        "narHash": "sha256-LOnLQ2tpYF9gqIDDr3+j3DbpJJr/QCH6zPRT2GzEUOE=",
+        "lastModified": 1781622756,
+        "narHash": "sha256-JrPh4M6S7aPsEE9tOENuZrxC6o2szSLlK+t4+nLke9s=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "6358ff76821101c178e3ab4919a62799bfe3652e",
+        "rev": "08018c72174a4df5657f8d94178ac69fb9c243e5",
         "type": "github"
       },
       "original": {
@@ -91,11 +89,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1781074563,
-        "narHash": "sha256-md8WlXOlfnIeHeOScMTTHFyf2d6iaTwPl2apR5EQ3P4=",
+        "lastModified": 1781577229,
+        "narHash": "sha256-lrp67w8AulE9Ks53n27I45ADSzbOCn4H+CNW1Ck8B+8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
+        "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
         "type": "github"
       },
       "original": {

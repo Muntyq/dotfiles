@@ -68,11 +68,20 @@ in {
         after = [ "blocky.service" "network-online.target" ];
         wants = [ "blocky.service" "network-online.target" ];
         requires = [ "blocky.service" ];
+        # preStart = pkgs.writeShellScript "blocky-ready" ''
+        #     for i in $(seq 1 30); do
+        #         if dig @127.0.0.1 cloudflare.com +short > /dev/null 2>&1; then
+        #             exit 0
+        #         fi
+        #         sleep 1
+        #     done
+        #     exit 1
+        # '';
         serviceConfig = {
-            Restart = "on-failure";
-            RestartSec = 30;
-            StartLimitBurst = 5;
-            StartLimitIntervalSec = 60;
+            restart = "on-failure";
+            restartsec = 15;
+            startlimitburst = 5;
+            startlimitintervalsec = 120;
         };
     };
 

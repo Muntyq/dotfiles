@@ -51,6 +51,20 @@
 	nixpkgs.config.allowUnfree = true;
 	users.mutableUsers = false;
 
+        security.sudo.extraRules = [{
+            users = [ "munty" ];
+            commands = [{
+                command = "/run/current-system/sw/bin/nixos-rebuild";
+                options = [ "NOPASSWD" ];
+            } {
+            #     command = "/run/current-system/sw/bin/systemctl";
+            #     options = [ "NOPASSWD" ];
+            # } {
+                command = "/run/current-system/sw/bin/reboot";
+                options = [ "NOPASSWD" ];
+            }];
+        }];
+
 	system.autoUpgrade = lib.mkIf ( hostProfile != "pebble" ) {
 		enable = true;
 		flake = "/home/${userProfile}/.config/nixos";

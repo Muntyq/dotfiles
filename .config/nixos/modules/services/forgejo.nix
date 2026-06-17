@@ -4,6 +4,7 @@ let
 
     subdomain = "git";
     port = "3000";
+    sshPort = 2222;
 
     # leave this be
     domain = "muntyq.com";
@@ -20,10 +21,14 @@ in {
                 DOMAIN = "${subdomain}.${domain}";
                 ROOT_URL = "https://${subdomain}.${domain}/";
                 HTTP_PORT = lib.toInt port;
+                SSH_PORT = sshPort;
+                SSH_LISTEN_PORT = sshPort;
             };
-        service.DISABLE_REGISTRATION = false;
+        service.DISABLE_REGISTRATION = true;
         };
     };
+
+    networking.firewall.allowedTCPPorts = [ sshPort ];
 
     # public; cloudflared + nginx
     services.cloudflared.tunnels."${tunnel}".ingress."${subdomain}.${domain}" = "http://localhost:80";

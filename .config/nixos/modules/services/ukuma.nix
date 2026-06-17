@@ -2,10 +2,13 @@
 
 let
 
-    domain = "muntyq.com";
-    localIP = "192.168.1.45";
     subdomain = "status";
     port = "3001";
+
+    # leave this be
+    domain = "muntyq.com";
+    localIP = "192.168.1.45";
+    tunnel = "piper";
 
 in {
 
