@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781711298,
-        "narHash": "sha256-/lyUJK9dwG16FGlL6Yz+yMmHhRSWCXiyzjvaohIrwbw=",
+        "lastModified": 1781751568,
+        "narHash": "sha256-hZAbXoNA4nCSaIJJLGl/EdErFtlnAS06jEp4oO7Qp6s=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fa4e2f7e101c2a656bdd910e49ae485bd2d8a358",
+        "rev": "5bcff43156c0eebe68759338b7879c8e1b2e2bd0",
         "type": "github"
       },
       "original": {
@@ -28,11 +28,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1781713559,
-        "narHash": "sha256-9nhL+0scw0kIENzK1VOG9lUAySJGFBDXKK8SQ8wSrnw=",
-        "rev": "90bdf32db8fc795967dac22d9a081cbbc6bc7eb3",
+        "lastModified": 1781736261,
+        "narHash": "sha256-y8q5ixfGDOWzYvv9Ed7G/FYMTlhadCRsGEgH2sGhjFg=",
+        "rev": "5d4f14d1eb139f97c63cb31e17f565c254262e5d",
         "type": "tarball",
-        "url": "https://git.muntyq.com/api/v1/repos/munty/inadev/archive/90bdf32db8fc795967dac22d9a081cbbc6bc7eb3.tar.gz"
+        "url": "https://git.muntyq.com/api/v1/repos/munty/inadev/archive/5d4f14d1eb139f97c63cb31e17f565c254262e5d.tar.gz"
       },
       "original": {
         "type": "tarball",
