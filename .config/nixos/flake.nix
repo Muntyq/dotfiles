@@ -17,12 +17,17 @@
 		};
 
 		inadev = {
-			url = "https://git.muntyq.com/munty/inadev/archive/main.tar.gz";
-			inputs.nixpkgs.follows = "nixpkgs";
+                    url = "https://git.muntyq.com/munty/inadev/archive/main.tar.gz";
+                    inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+                notea = {
+                    url = "https://git.muntyq.com/munty/notea/archive/main.tar.gz";
+		    inputs.nixpkgs.follows = "nixpkgs";
+                };
 	};
 
-	outputs = { nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, sops-nix, inadev, self, ... }@inputs:
+	outputs = { nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, sops-nix, inadev, notea, self, ... }@inputs:
 
 	let
 		mkSystem = { system, hostProfile, userProfile }: nixpkgs.lib.nixosSystem {
