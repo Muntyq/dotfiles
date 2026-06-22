@@ -61,7 +61,7 @@
 
                     # my own apps -------------------------
                     inputs.inadev.packages.${pkgs.stdenv.hostPlatform.system}.default
-                    inputs.notea.packages.${pkgs.stdenv.hostPlatform.system}.default
+                    inputs.inote.packages.${pkgs.stdenv.hostPlatform.system}.default
 
                 ];
 

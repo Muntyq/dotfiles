@@ -21,13 +21,13 @@
                     inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-                notea = {
-                    url = "https://git.muntyq.com/munty/notea/archive/main.tar.gz";
+                inote = {
+                    url = "https://git.muntyq.com/munty/inote/archive/main.tar.gz";
 		    inputs.nixpkgs.follows = "nixpkgs";
                 };
 	};
 
-	outputs = { nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, sops-nix, inadev, notea, self, ... }@inputs:
+	outputs = { nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, sops-nix, inadev, inote, self, ... }@inputs:
 
 	let
 		mkSystem = { system, hostProfile, userProfile }: nixpkgs.lib.nixosSystem {
