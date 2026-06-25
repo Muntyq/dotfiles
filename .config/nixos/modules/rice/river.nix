@@ -1,47 +1,46 @@
+{ pkgs, username, ... }: {
 
-{ pkgs, userProfile, ... }: {
+    home-manager.users.${username}.home.packages = with pkgs; [
+        wofi       # app launcher
+        dunst      # notifications
+    ];
 
-	home-manager.users.${userProfile}.home.packages = with pkgs; [
-		wofi       # app launcher
-		dunst      # notifications
-	];
+    environment.systemPackages = with pkgs; [
+        river
+    ];
 
-	environment.systemPackages = with pkgs; [
-		river
-	];
+    # Compositor & window manager (Hyprland)
 
-	# Compositor & window manager (Hyprland)
+    programs.uwsm = {
+        enable = true;
+        waylandCompositors.river = {
+            prettyName = "River";
+            comment = "River + uwsm";
+            binPath = "/run/current-system/sw/bin/river";
+        };
+    };
 
-	programs.uwsm = {
-		enable = true;
-		waylandCompositors.river = {
-			prettyName = "River";
-			comment = "River + uwsm";
-			binPath = "/run/current-system/sw/bin/river";
-		};
-	};
+    # Login (Sddm)
 
-	# Login (Sddm)
+    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.wayland.enable = true;
 
-	services.displayManager.sddm.enable = true;
-	services.displayManager.sddm.wayland.enable = true;
+    # Wayland general things
 
-	# Wayland general things
+    xdg.portal = {
+        enable = true;
+        extraPortals = with pkgs; [
+            xdg-desktop-portal-gtk
+            xdg-desktop-portal-wlr
+        ];
+    };
 
-	xdg.portal = {
-		enable = true;
-		extraPortals = with pkgs; [
-			xdg-desktop-portal-gtk
-			xdg-desktop-portal-wlr
-		];
-	};
-
-	environment.sessionVariables = {
-		NIXOS_OZONE_WL = "1";
-		MOZ_ENABLE_WAYLAND = "1";
-		QT_QPA_PLATFORM = "wayland;xcb";
-		GDK_BACKEND = "wayland,x11";
-		SDL_VIDEODRIVER = "wayland";
-		CLUTTER_BACKEND = "wayland";
-	};
+    environment.sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+        MOZ_ENABLE_WAYLAND = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        GDK_BACKEND = "wayland,x11";
+        SDL_VIDEODRIVER = "wayland";
+        CLUTTER_BACKEND = "wayland";
+    };
 }

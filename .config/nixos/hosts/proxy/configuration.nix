@@ -1,13 +1,13 @@
-{ inputs, ... }: {
+{ inputs, hostname, ... }: {
 
-	imports = [
-		./hardware-configuration.nix
-		inputs.home-manager.nixosModules.home-manager
-		../../modules/minimum.nix
-		../../modules/drivers/cpu-intel.nix
-		../../modules/drivers/gpu-intel.nix
-	];
+    imports = [
+        ./hardware-configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+        ../../modules/minimum.nix
+        ../../modules/drivers/cpu-intel.nix
+        ../../modules/drivers/gpu-intel.nix
+    ];
 
-	networking.hostName = "proxy";
-	system.stateVersion = "25.11";
+    networking.hostName = "hostname";
+    system.stateVersion = "25.11";
 }

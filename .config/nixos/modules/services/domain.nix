@@ -1,9 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, local_ip, ... }:
 
 let
 
     domain = "muntyq.com";
-    localIP = "192.168.1.45";
     interface = "end0"; # for @core enp3s0
     tunnel = "piper";
 
@@ -12,7 +11,7 @@ in {
     # Network setup + ports ----------------------------
     networking = {
         interfaces."${interface}".ipv4.addresses = [{
-            address = "${localIP}";
+            address = "${local_ip}";
             prefixLength = 24;
         }];
         defaultGateway = "192.168.1.1";

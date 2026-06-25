@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, local_ip, ... }:
 
 let
 
@@ -7,7 +7,6 @@ let
 
     # leave this be
     domain = "muntyq.com";
-    localIP = "192.168.1.45";
     tunnel = "piper";
 
 in {
@@ -15,7 +14,7 @@ in {
     # youre app
 
     # local; blocky + nginx
-    services.blocky.settings.customDNS.mapping."${subdomain}${domain}" = "${localIP}";
+    services.blocky.settings.customDNS.mapping."${subdomain}${domain}" = "${local_ip}";
     services.nginx.virtualHosts = {
         "status.${domain}" = {
             useACMEHost = "${domain}";

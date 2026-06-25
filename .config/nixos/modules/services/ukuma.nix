@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, local_ip, ... }:
 
 let
 
@@ -7,7 +7,6 @@ let
 
     # leave this be
     domain = "muntyq.com";
-    localIP = "192.168.1.45";
     tunnel = "piper";
 
 in {

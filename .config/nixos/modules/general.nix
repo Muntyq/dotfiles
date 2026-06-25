@@ -1,4 +1,4 @@
-{ pkgs, userProfile, inputs, ... }: {
+{ pkgs, username, inputs, ... }: {
 
 
 # ██╗  ██╗ ██████╗ ███╗   ███╗███████╗
@@ -11,11 +11,11 @@
     home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        users.${userProfile} = {
+        users.${username} = {
             programs.home-manager.enable = true;
             home = {
-                username = "${userProfile}";
-                homeDirectory = "/home/${userProfile}";
+                username = "${username}";
+                homeDirectory = "/home/${username}";
                 stateVersion = "25.11";
                 packages = with pkgs; [
                     clapboard

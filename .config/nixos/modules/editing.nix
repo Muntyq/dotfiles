@@ -1,7 +1,7 @@
-{ pkgs, userProfile, ... }:	{
+{ pkgs, username, ... }:	{
 
-	home-manager.users.${userProfile}.home.packages = with pkgs; [
-		krita
-		inkscape
-	];
+    home-manager.users.${username}.home.packages = with pkgs; [
+        krita
+        inkscape
+    ];
 }

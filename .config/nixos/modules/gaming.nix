@@ -1,4 +1,4 @@
-{ pkgs, userProfile, ... }: {
+{ pkgs, username, ... }: {
 
     programs.steam = {
         enable = true;
@@ -7,7 +7,7 @@
 
     hardware.opentabletdriver.enable = true;
 
-    home-manager.users.${userProfile}.home.packages = with pkgs; [
+    home-manager.users.${username}.home.packages = with pkgs; [
         protonplus
         prismlauncher
         osu-lazer-bin

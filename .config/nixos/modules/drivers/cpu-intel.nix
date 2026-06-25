@@ -1,4 +1,4 @@
 { ... }: {
 
-	boot.kernelParams = [ "intel_pstate=active" ];
+    boot.kernelParams = [ "intel_pstate=active" ];
 }

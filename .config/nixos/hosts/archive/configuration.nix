@@ -1,10 +1,10 @@
-{ inputs, ... }: {
+{ inputs, hostname, ... }: {
 
-	imports = [
-		./hardware-configuration.nix
-		../../modules/minimum.nix
-	];
+    imports = [
+        ./hardware-configuration.nix
+        ../../modules/minimum.nix
+    ];
 
-	networking.hostName = "archive";
-	system.stateVersion = "25.11";
+    networking.hostName = "${hostname}";
+    system.stateVersion = "25.11";
 }
