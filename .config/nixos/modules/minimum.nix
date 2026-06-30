@@ -17,6 +17,7 @@
             neovim
             tmux
             wget
+            iw
             curl
             sops
             nmap
