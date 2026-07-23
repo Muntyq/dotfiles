@@ -29,6 +29,7 @@
 
                     # other ------------------------------
                     wine-wayland # use regular wine if incompatibilities arrise
+                    winetricks
 
                     # neovim compatability thing ---------
                     # lua-language-server

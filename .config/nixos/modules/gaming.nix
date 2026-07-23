@@ -9,6 +9,7 @@
 
     home-manager.users.${username}.home.packages = with pkgs; [
         protonplus
+        protontricks
         prismlauncher
         osu-lazer-bin
     ];
