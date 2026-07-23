@@ -3,11 +3,8 @@
     programs.steam = {
         enable = true;
         dedicatedServer.openFirewall = true;
+        protontricks.enable = true;
     };
-
-    environment.systemPackages = with pkgs; [
-        protontricks
-    ];
 
     hardware.opentabletdriver.enable = true;
 
