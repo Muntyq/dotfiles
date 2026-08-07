@@ -3,5 +3,7 @@
     home-manager.users.${username}.home.packages = with pkgs; [
         krita
         inkscape
+        kdenlive
+        shotcut
     ];
 }
