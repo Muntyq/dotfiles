@@ -6,4 +6,6 @@
         kdePackages.kdenlive
         shotcut
     ];
+
+    programs.obs-studio.enable = true;
 }
