@@ -14,8 +14,6 @@
             river
         ];
 
-        programs.vesktop.enable = true;
-
     # Font ---------------------------------------------
         fonts.fontconfig = {
             enable = true;
@@ -37,7 +35,8 @@
     # Login (Sddm) -------------------------------------
 
     services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
+    services.xserver.enable = true;
+    # services.displayManager.sddm.wayland.enable = true;
 
     # Cursor -------------------------------------------
 

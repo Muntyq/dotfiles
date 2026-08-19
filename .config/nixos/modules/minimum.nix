@@ -72,7 +72,7 @@
         dates = "Sat *-*-* 06:00:00";
         persistent = true;
         allowReboot = true;
-        operation = "switch"; # set to boot to not restart
+        operation = "boot"; # set to boot to not restart
     };
 
     # Bootloader config ----------------------

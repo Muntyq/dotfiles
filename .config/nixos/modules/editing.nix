@@ -5,7 +5,6 @@
         inkscape
         kdePackages.kdenlive
         shotcut
+        obs-studio
     ];
-
-    programs.obs-studio.enable = true;
 }

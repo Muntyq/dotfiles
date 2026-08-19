@@ -13,5 +13,7 @@
         prismlauncher
         osu-lazer-bin
         steam-run
+        discord
+        vesktop
     ];
 }
