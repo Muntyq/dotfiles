@@ -16,4 +16,6 @@
         discord
         vesktop
     ];
+
+    boot.kernelModules = [ "xpad" ];
 }
